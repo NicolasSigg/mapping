@@ -1,0 +1,68 @@
+
+
+## 1. create folder for git clones
+-----------------------------------------------------
+mkdir git  
+cd ~/git
+__________________________________________________________
+## 2. cloning githubs
+-----------------------------------------------------
+git clone https://github.com/DrDiegoPaez/qolo_ros
+
+-----------------------------------------------------
+sudo apt install libsdl2-dev
+
+git clone https://github.com/epfl-lasa/rds.git
+cd rds/RVO2
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+cd ../../rds
+make
+
+-----------------------------------------------------
+https://github.com/SCAI-Lab/slam_toolbox
+
+__________________________________________________________
+## 3. create symlinks
+-----------------------------------------------------
+cd ~/catkin_ws/src
+ln -s ~/git/qolo
+ln -s ~/git/rds
+ln -s ~/git/slam_toolbox
+
+ls
+## git clones should appear on this list.
+__________________________________________________________
+## 4. Install packages
+
+sudo apt-get install -y ros-melodic-jsk-visualization
+
+__________________________________________________________
+
+## How to play rosbags:
+
+mkdir rosbag
+
+##download rosbag into rosbag-folder
+https://drive.google.com/drive/folders/1HhOOl0ey0ivfpu0U8nblxB3NxzZa8kl5
+
+-----------------------------------------------------
+terminal 0
+	roscore
+
+terminal 1
+	cd  ~/rosbag/
+	rosparam set use_sim_time true
+	rosbag play -l 2023-01-12-12-41-13.bag --clock
+
+## <2023-01-12-12-41-13.bag> is name of rosbag file
+
+terminal 2
+	roslaunch qolo rviz.launch
+
+
+
+
